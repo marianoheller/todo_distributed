@@ -9,8 +9,7 @@ defmodule Todo.Supervisor do
   def init(_) do
     children = [
       supervisor(Todo.Database, ["./persist/"]),
-      supervisor(Todo.ServerSupervisor, []),
-      worker(Todo.Cache, [])
+      supervisor(Todo.ServerSupervisor, [])
     ]
 
     Supervisor.init(children, strategy: :one_for_one)

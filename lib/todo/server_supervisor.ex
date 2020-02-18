@@ -7,8 +7,7 @@ defmodule Todo.ServerSupervisor do
 
   def start_child(todo_list_name) do
     spec = {Todo.Server, todo_list_name}
-    {:ok, pid} = DynamicSupervisor.start_child(:todo_server_supervisor, spec)
-    pid
+    DynamicSupervisor.start_child(:todo_server_supervisor, spec)
   end
 
   def init(_init_arg) do
